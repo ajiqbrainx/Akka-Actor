@@ -6,8 +6,13 @@ lazy val root = (project in file("."))
   .settings(
     name := "Akka Actor Project"
   )
+//val AkkaVersion = "2.6.18"
+//libraryDependencies ++= Seq(
+//  "com.typesafe.akka" %% "akka-actor" % AkkaVersion,
+//  "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test
+//)
 val AkkaVersion = "2.6.18"
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % AkkaVersion,
-  "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test
+  "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+  "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test
 )
