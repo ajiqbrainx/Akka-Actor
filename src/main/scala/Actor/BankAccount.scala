@@ -63,6 +63,8 @@ object BankAccount extends App {
 
   import Person._
 
+
+
   val system = ActorSystem("Actor")
   val account = system.actorOf(Props[Bank], "Ajith")
   val person = system.actorOf(Props[Person], "Aji")
