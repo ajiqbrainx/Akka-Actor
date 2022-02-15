@@ -1,6 +1,6 @@
 package MorePractise
 
-import akka.actor.{Actor, ActorSystem, Props}
+import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
 
 object Sbi extends App {
 
@@ -12,7 +12,7 @@ object Sbi extends App {
 
   case class Error(msg: String)
 
-  class Sbi extends Actor {
+  class Sbi extends Actor with ActorLogging{
     override def receive: Receive = bank(0)
 
     def bank(balance: Int): Receive = {
