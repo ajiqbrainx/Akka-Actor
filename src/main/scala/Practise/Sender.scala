@@ -1,37 +1,23 @@
 package Practise
 
-import akka.actor.Actor
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 
 object Sender extends App {
 
-  object Teacher {
-    case class Attedance(name: String)
-  }
+  case class Call(re: ActorRef)
 
-  class Teacher extends Actor {
-    import Student._
-    import Teacher._
-    override def receive: Receive ={
-      case Present(msg) =>println(s"$msg Present Miss ")
-      case Absent(msg)=>println(s"$msg Absent Miss")
-    }
-  }
-
-  object Student {
-    case class Present(msg: String)
-
-    case class Absent(msg: String)
-  }
-
-  class Student extends Actor {
-
-    import Student._
-    import Teacher._
-
+  class Sender1 extends Actor {
     override def receive: Receive = {
-      case Present(msg) =>
+      case Call(re) => re ! "Ajith"
+      case "Ajith"=> println("get")
+        sender() ! "Aji"
+      case msg:String=>println(s"It is getting from $msg")
     }
   }
 
+  val system = ActorSystem("Aa")
+  val send = system.actorOf(Props[Sender1], "send")
+  val aji = system.actorOf(Props[Sender1], "aji")
 
+  send ! Call(aji)
 }

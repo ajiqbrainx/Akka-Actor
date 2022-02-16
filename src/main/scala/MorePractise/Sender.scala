@@ -13,7 +13,7 @@ object Sender extends App {
   class Aji extends Actor {
     override def receive: Receive = {
       case msg:String => println(s"$msg Im Aji ")
-      self ! (ReceiveAbi)
+      self ! ReceiveAbi
       case ReceiveAji =>println("Abi is telling")
     }
   }
