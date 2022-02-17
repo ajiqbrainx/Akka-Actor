@@ -21,7 +21,7 @@ object ExceptionHandling extends App {
 
     override val supervisorStrategy: SupervisorStrategy = OneForOneStrategy(){
       case _:ArithmeticException => Stop
-//      case _:NullPointerException => Restart
+      case _:NullPointerException => Restart
     }
 
     override def preStart(): Unit = log.info("Prestart is Starting ")
@@ -36,5 +36,5 @@ val system=ActorSystem("aa")
   val hand=system.actorOf(Props[Handling],"hand")
 
   hand ! 0
-  hand ! 2
+  hand ! 4
 }

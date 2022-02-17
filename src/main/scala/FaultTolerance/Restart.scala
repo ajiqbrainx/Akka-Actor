@@ -15,8 +15,10 @@ object Restart extends App {
 
     override def receive: Receive = {
       case FailChild => child ! Fail
-      case CheckChild => child ! Check
+      case CheckChild => child !
+
     }
+
   }
 
   class Child extends Actor with ActorLogging {
