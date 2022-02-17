@@ -9,7 +9,8 @@ lazy val root = (project in file("."))
 val AkkaVersion = "2.6.18"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % AkkaVersion,
-  "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test
+  "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test,
+  "org.scalatest" %% "scalatest" % "3.2.9" % Test
 )
 //val AkkaVersion = "2.6.18"
 //libraryDependencies ++= Seq(

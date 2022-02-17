@@ -1,6 +1,6 @@
 package FaultTolerance
 
-import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
+import akka.actor.{Actor, ActorLogging, ActorSystem, PoisonPill, Props}
 
 object Restart extends App {
 
@@ -32,8 +32,10 @@ object Restart extends App {
     override def postRestart(reason: Throwable): Unit = log.info("restarting")
 
     override def receive: Receive = {
-      case Fail => log.warning("I am getting warning ")
+      case Fail =>
+        log.warning("I am getting warning ")
         throw new RuntimeException("Error")
+//        PoisonPill
       case Check => log.info("I am here Macha")
     }
   }
