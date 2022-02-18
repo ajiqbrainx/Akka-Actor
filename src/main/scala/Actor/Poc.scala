@@ -57,13 +57,13 @@ object Poc extends App {
         //          sender() ! Kill
       }
       case Nominee(ref) =>
-        ref ! NomineeCheck(Ajith)
+//        ref ! NomineeCheck(Ajith)
         ref ! NomineeCheck(Ashok)
-        ref ! NomineeCheck(Abi)
-        ref ! NomineeCheck(Ajil)
-        ref ! NomineeCheck(Akil)
+//        ref ! NomineeCheck(Abi)
+//        ref ! NomineeCheck(Ajil)
+//        ref ! NomineeCheck(Akil)
       case Checked => println("Nominee Checked")
-      case PolicyDetails => invesement(0, 50)
+      case PolicyDetails =>context.become( invesement(0,0))
 
     }
 
@@ -71,14 +71,14 @@ object Poc extends App {
       case InvestAmount(s) => context.become(invesement(amt + s, y))
         println(s"your Investing Amount is $s")
       case Validity => amt match {
-        case x if amt < 1000 => context.become(invesement(amt, y + 10))
-        case x if amt < 2000 => context.become(invesement(amt, y + 20))
-        case x if amt < 3000 => context.become(invesement(amt, y + 30))
-        case x if amt < 4000 => context.become(invesement(amt, y + 40))
-        case x if amt < 5000 => context.become(invesement(amt, y + 50))
+        case x if amt <= 1000 => context.become(invesement(amt, y + 10))
+        case x if amt <= 2000 => context.become(invesement(amt, y + 20))
+        case x if amt <= 3000 => context.become(invesement(amt, y + 30))
+        case x if amt <= 4000 => context.become(invesement(amt, y + 40))
+        case x if amt <= 5000 => context.become(invesement(amt, y + 50))
         case _ => println("Excess of Amount")
       }
-      case Check => println(s"Your Policy Amount is = $amt And Your Validity is = $y ")
+      case Check => println(s"Your Policy Amount is = $amt And Your Validity is = $y Years")
 
     }
 
@@ -118,11 +118,15 @@ object Poc extends App {
 //  lic ! PolicyId(1)
 //  lic ! PolicyId(5)
 //  lic ! InsuranceId(1)
+//  lic ! InsuranceId(5)
 //  lic ! InsuranceId(6)
 //
 //  lic ! Nominee(nominee)
   lic ! PolicyDetails
   lic ! InvestAmount(1000)
+  lic ! InvestAmount(6000)
+//  lic ! InvestAmount(5000)
+  lic ! Validity
   lic ! Check
 
 
