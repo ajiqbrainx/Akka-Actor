@@ -15,7 +15,7 @@ object Restart extends App {
 
     override def receive: Receive = {
       case FailChild => child ! Fail
-      case CheckChild => child !
+      case CheckChild => child ! Check
 
     }
 
