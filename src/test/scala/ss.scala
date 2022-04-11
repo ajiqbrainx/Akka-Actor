@@ -4,7 +4,7 @@ import akka.testkit.{EventFilter, ImplicitSender, TestKit}
 import org.scalatest.wordspec.AnyWordSpecLike
 
 class SupervisionSpec extends TestKit(ActorSystem("SupervisionSpec"))
-  with ImplicitSender with AnyWordSpecLike{
+  with ImplicitSender with AnyWordSpecLike {
 
    def afterAll(): Unit = {
     TestKit.shutdownActorSystem(system)

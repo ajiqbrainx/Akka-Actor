@@ -145,22 +145,23 @@ object Poc extends App {
   val lic = system.actorOf(Props[Lic], "Lic")
   val nominee = system.actorOf(Props[Nominee1], "nominee")
 
-  //  lic ! PolicyId(1)
-  //  lic ! PolicyId(6)
-  //  lic ! InsuranceId(1)
-  //  lic ! InsuranceId(5)
-  //  lic ! InsuranceId(6)
+//    lic ! PolicyId(1)
+//    lic ! PolicyId(6)
+//    lic ! InsuranceId(1)
+//    lic ! InsuranceId(5)
+//    lic ! InsuranceId(6)
   //
-  //  lic ! Nominee(nominee)
-  //  lic ! PolicyApply
-  //  lic ! InvestAmount(1000)
+//    lic ! Nominee(nominee)
+//    lic ! PolicyApply
+//    lic ! InvestAmount(1000)
+//  lic ! InvestAmount(1000)
   // lic ! InvestAmount(6000)
   //  //  lic ! InvestAmount(5000)
-  //  lic ! Validity
-  //  lic ! Check
+//    lic ! Validity
+//    lic ! Check
 
   lic ! ForgotYourId
-  lic ! "Ashok"
-  lic ! 22222
+  lic ! "Ajith"
+  lic ! 11111
 
 }

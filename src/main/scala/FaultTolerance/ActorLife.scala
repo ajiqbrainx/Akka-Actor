@@ -1,5 +1,6 @@
 package FaultTolerance
 
+import akka.actor.SupervisorStrategy.stop
 import akka.actor.{Actor, ActorLogging, ActorSystem, PoisonPill, Props}
 
 object ActorLife extends App {
@@ -15,14 +16,18 @@ object ActorLife extends App {
 
     override def receive: Receive = {
       case ChildCreate(name) => context.actorOf(Props[Life], name)
+//        context.stop(name)
 
-    }
+
+       }
+
   }
 
   val system = ActorSystem("Aa")
   val life =system.actorOf(Props[Life],"life")
 
   life ! ChildCreate("Aji")
-  life ! PoisonPill
+
+
 
 }

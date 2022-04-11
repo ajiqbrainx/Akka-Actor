@@ -10,7 +10,7 @@ class Supervisor extends Actor {
   import akka.actor.SupervisorStrategy._
   import scala.concurrent.duration._
 
-  override val supervisorStrategy =
+  override val supervisorStrategy: OneForOneStrategy =
     OneForOneStrategy(maxNrOfRetries = 10, withinTimeRange = 1 minutes) {
       case _: ArithmeticException => Resume
       case _: NullPointerException => Restart
